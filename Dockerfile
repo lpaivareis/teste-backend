@@ -1,6 +1,6 @@
 FROM ruby:3.0.2-alpine3.13
 
-LABEL maintainer="Matheus M<mmacedo@icasei.com.br>"
+LABEL maintainer="Lucas F<lfelipepaivareis@gmail.com>"
 
 RUN apk --update --upgrade add \
       bash\
