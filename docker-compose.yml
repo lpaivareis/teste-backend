@@ -1,8 +1,8 @@
-version: '3'
+version: "3"
 services:
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
-    networks: 
+    networks:
       - broker-kafka
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
@@ -10,7 +10,7 @@ services:
 
   kafka:
     image: confluentinc/cp-kafka:latest
-    networks: 
+    networks:
       - broker-kafka
     depends_on:
       - zookeeper
@@ -23,17 +23,17 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT,EXTERNAL2:PLAINTEXT,EXTERNAL3:PLAINTEXT,EXTERNAL4:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
       KAFKA_CREATE_TOPICS: order-topic:3:1
 
   kafdrop:
     image: obsidiandynamics/kafdrop:latest
-    networks: 
+    networks:
       - broker-kafka
     depends_on:
       - kafka
     ports:
-      - 19000:9000
+      - 9000:9000
     environment:
       KAFKA_BROKERCONNECT: kafka:29092
 
@@ -42,11 +42,13 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: teste_backend_app
+    volumes:
+      - "./:/var/www"
     depends_on:
       - zookeeper
       - kafka
       - kafdrop
-    networks: 
+    networks:
       - broker-kafka
     ports:
       - 3000:3000

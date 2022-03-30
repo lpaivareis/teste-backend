@@ -8,7 +8,9 @@ RUN apk --update --upgrade add \
       build-base\
       tzdata
 
-ENV INSTALL_PATH /teste-backend
+ENV INSTALL_PATH /var/www/
+
+# ENV INSTALL_PATH /teste-backend
 
 RUN mkdir -p $INSTALL_PATH
 
@@ -17,6 +19,8 @@ WORKDIR $INSTALL_PATH
 COPY Gemfile* $INSTALL_PATH/
 
 RUN bundle install
+
+RUN rails assets:clean assets:precompile
 
 ADD . $INSTALL_PATH
 
