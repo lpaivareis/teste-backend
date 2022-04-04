@@ -4,6 +4,12 @@ class ContactMessageConsumer < Racecar::Consumer
   def process(message)
     data = JSON.parse(message.value)
 
-    puts data
+    log = Logs.new(
+      name: data["name"],
+      email: data["email"],
+      sysdate: data["created_at"]
+    )
+
+    log.save
   end
 end
