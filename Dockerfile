@@ -8,9 +8,9 @@ RUN apk --update --upgrade add \
       build-base\
       tzdata
 
-ENV INSTALL_PATH /var/www/
+# ENV INSTALL_PATH /var/www/
 
-# ENV INSTALL_PATH /teste-backend
+ENV INSTALL_PATH /teste-backend
 
 RUN mkdir -p $INSTALL_PATH
 
