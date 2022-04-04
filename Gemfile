@@ -49,7 +49,8 @@ gem 'wisper_kafka', '~> 0.1.0'
 gem 'racecar', '~> 2.3.0'
 gem 'rdkafka', '~> 0.8.1'
 gem 'awesome_print', '~> 1.9', '>= 1.9.2'
-gem 'byebug', '~> 11.1', '>= 11.1.3'
+gem 'pry-rails'
+gem 'mongoid', '~> 7.4'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
